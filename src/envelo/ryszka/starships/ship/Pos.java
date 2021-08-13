@@ -1,4 +1,4 @@
-package envelo.ryszka.starships;
+package envelo.ryszka.starships.ship;
 
 public class Pos {
     private int x;

@@ -1,4 +1,8 @@
-package envelo.ryszka.starships;
+package envelo.ryszka.starships.ship;
+
+import envelo.ryszka.starships.enums.Direction;
+import envelo.ryszka.starships.enums.Field;
+import envelo.ryszka.starships.map.Map;
 
 import java.util.ArrayList;
 import java.util.List;

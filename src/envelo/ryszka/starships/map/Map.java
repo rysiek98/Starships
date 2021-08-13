@@ -1,4 +1,6 @@
-package envelo.ryszka.starships;
+package envelo.ryszka.starships.map;
+
+import envelo.ryszka.starships.enums.Field;
 
 import java.util.Locale;
 

@@ -1,5 +1,8 @@
 package envelo.ryszka.starships;
 
+import envelo.ryszka.starships.enums.Field;
+import envelo.ryszka.starships.map.Map;
+
 public class StarShipsApp {
 
     public static void main(String[] args) {
