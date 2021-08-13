@@ -1,5 +1,12 @@
 package envelo.ryszka.starships;
 
+import envelo.ryszka.starships.enums.Direction;
+import envelo.ryszka.starships.ship.Ship;
+import envelo.ryszka.starships.util.Collider;
+import envelo.ryszka.starships.util.Distributor;
+import envelo.ryszka.starships.util.Input;
+
+import java.util.Locale;
 import java.util.Scanner;
 
 public class UI {
@@ -28,23 +35,62 @@ public class UI {
         System.out.print("Enter second userName: ");
         secondUserName = in.nextLine();
     }
+
     void view2_randomFirstUser() {
         if (Math.random() < 0.5) {
             user1 = new User(firstUserName, mapSize);
             user2 = new User(secondUserName, mapSize);
-        }
-        else {
+        } else {
             user2 = new User(firstUserName, mapSize);
             user1 = new User(secondUserName, mapSize);
         }
     }
-    void view3_shipsPositioning() {
 
+    void view3_shipsPositioning() {
+        System.out.println(user1.name + " turn to place his/her ships");
+        int[] shipsToPlace = Distributor.getShips(mapSize);
+        for (int length = 4; length >= 1; length--) {
+            for (int j = 0; j < shipsToPlace[length - 1]; j++) {
+                Ship newShip;
+                do {
+                    user1.ownMap.show();
+                    System.out.print("Input format: <x> <y> <dir>");
+                    System.out.print("\nPlace your " + length + "x1 ship: ");
+                    Input input = parseInput(mapSize);
+                    System.out.println(" x" + input.x + "y" + input.y);
+                    System.out.println(input.dir);
+                    newShip = new Ship(input.x, input.y, input.dir, length);
+                } while (!Collider.isPlaceAvailable(newShip, user1.ownMap));
+                newShip.render(user1.ownMap); // should be: user1.ownMap.addShip(newShip) in the future
+                user1.shipList.add(newShip);
+            }
+        }
     }
+
     void view4_game() {
 
     }
+
     void view5_theEnd() {
 
+    }
+
+    private Input parseInput(int mapSize) {
+        String input = in.nextLine();
+        String[] words = input.split(" ");
+        int x = Integer.parseInt(words[0]);
+        int y = Integer.parseInt(words[1]);
+        while (!(x >= 0 && y >= 0 && x < mapSize && y < mapSize)) {
+            System.out.print("Wrong input place x and y between 0 and " + mapSize+ ": ");
+            input = in.nextLine();
+            words = input.split(" ");
+            x = Integer.parseInt(words[0]);
+            y = Integer.parseInt(words[1]);
+        }
+        System.out.println("parseInput x:" + x + "parseInput y: " + y);
+        System.out.println(words[2].toLowerCase(Locale.ROOT).charAt(0));
+        Direction dir = words[2].toLowerCase(Locale.ROOT).charAt(0) == 'd' ? Direction.DOWN : Direction.RIGHT;
+
+        return new Input(x, y, dir);
     }
 }

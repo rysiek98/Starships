@@ -4,5 +4,6 @@ public enum Field {
     WATER,
     SHIP,
     DARK,
-    HIT
+    HIT,
+    LOCKED_AREA
 }

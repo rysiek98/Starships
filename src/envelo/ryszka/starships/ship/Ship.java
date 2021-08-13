@@ -16,14 +16,19 @@ public class Ship {
             length = 4;
         }
         posList = new ArrayList<>();
+        System.out.println("lenght: " + length);
+        System.out.println("Adding x: " + x + " y: " + y);
         posList.add(new Pos(x, y));
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length-1; i++) {
             switch (dir) {
                 case RIGHT:
                     x++;
+                    break;
                 case DOWN:
                     y++;
+                    break;
             }
+            System.out.println("Adding x: " + x + " y: " + y);
             posList.add(new Pos(x, y));
         }
     }
@@ -63,6 +68,14 @@ public class Ship {
         for (Pos p : posList) {
             map.getMapArray()[p.getX()][p.getY()] = Field.SHIP;
         }
+    }
+
+    public boolean isOnMap(int mapSize) {
+        for (Pos p : posList) {
+            if (p.getX() > mapSize || p.getY() > mapSize)
+                return false;
+        }
+        return true;
     }
 
 }

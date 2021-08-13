@@ -2,6 +2,7 @@ package envelo.ryszka.starships.map;
 
 import envelo.ryszka.starships.enums.Field;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 public class Map {
@@ -14,6 +15,16 @@ public class Map {
         for (int y = 0; y < n; y++) {
             for (int x = 0; x < n; x++) {
                 mapArray[x][y] = field;
+            }
+        }
+    }
+
+    public Map(Map map) {
+        this.n = map.getSize();
+        this.mapArray = new Field[this.n][this.n];
+        for (int y = 0; y < n; y++) {
+            for (int x = 0; x < n; x++) {
+                this.mapArray[x][y] = map.getMapArray()[x][y];
             }
         }
     }
@@ -47,6 +58,8 @@ public class Map {
                     case DARK -> System.out.print(Colors.BG_BLACK + " " + Colors.RESET);
 
                     case SHIP -> System.out.print(Colors.BG_WHITE + " " + Colors.RESET);
+
+                    case LOCKED_AREA -> System.out.print(Colors.BG_YELLOW + " " + Colors.RESET);
                     //WATER
                     default -> System.out.print(Colors.BG_BLUE + " " + Colors.RESET);
                 }
@@ -59,4 +72,7 @@ public class Map {
         return mapArray;
     }
 
+    public int getSize() {
+        return n;
+    }
 }
