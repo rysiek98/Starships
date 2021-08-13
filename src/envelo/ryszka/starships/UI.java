@@ -30,12 +30,12 @@ public class UI {
     }
     void view2_randomFirstUser() {
         if (Math.random() < 0.5) {
-            user1 = new User(firstUserName);
-            user2 = new User(secondUserName);
+            user1 = new User(firstUserName, mapSize);
+            user2 = new User(secondUserName, mapSize);
         }
         else {
-            user2 = new User(firstUserName);
-            user1 = new User(secondUserName);
+            user2 = new User(firstUserName, mapSize);
+            user1 = new User(secondUserName, mapSize);
         }
     }
     void view3_shipsPositioning() {
