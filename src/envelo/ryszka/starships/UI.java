@@ -29,7 +29,14 @@ public class UI {
         secondUserName = in.nextLine();
     }
     void view2_randomFirstUser() {
-
+        if (Math.random() < 0.5) {
+            user1 = new User(firstUserName);
+            user2 = new User(secondUserName);
+        }
+        else {
+            user2 = new User(firstUserName);
+            user1 = new User(secondUserName);
+        }
     }
     void view3_shipsPositioning() {
 

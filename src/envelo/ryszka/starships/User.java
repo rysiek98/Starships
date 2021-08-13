@@ -9,6 +9,11 @@ public class User {
     public String name;
     public Map ownMap;
     public Map enemyMap;
-    public int points = 0;
+    public int points;
     public List<Ship> shipList;
+
+    public User(String name) {
+        this.name = name;
+        points = 0;
+    }
 }
