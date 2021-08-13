@@ -15,7 +15,20 @@ public class Pos {
         isHit = true;
     }
 
-    public boolean isHit(){
+    public boolean getIsHit(){
         return isHit;
     }
+
+    public boolean isHere(int x, int y){
+        return this.x == x && this.y == y;
+    }
+
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
 }

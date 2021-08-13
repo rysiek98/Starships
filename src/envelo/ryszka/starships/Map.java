@@ -53,4 +53,8 @@ public class Map {
         }
     }
 
+    public Field [][] getMapArray(){
+        return mapArray;
+    }
+
 }
