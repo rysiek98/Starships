@@ -47,7 +47,9 @@ public class UI {
     }
 
     void view3_shipsPositioning() {
-        System.out.println(user1.name + " turn to place his/her ships");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("Player: " + user1.name + " turn to place his/her ships");
+        System.out.println("-------------------------------------------------------");
         int[] shipsToPlace = Distributor.getShips(mapSize);
         for (int length = 4; length >= 1; length--) {
             for (int j = 0; j < shipsToPlace[length - 1]; j++) {
@@ -57,8 +59,6 @@ public class UI {
                     System.out.print("Input format: <x> <y> <dir>");
                     System.out.print("\nPlace your " + length + "x1 ship: ");
                     Input input = parseInput(mapSize);
-                    System.out.println(" x" + input.x + "y" + input.y);
-                    System.out.println(input.dir);
                     newShip = new Ship(input.x, input.y, input.dir, length);
                 } while (!Collider.isPlaceAvailable(newShip, user1.ownMap));
                 newShip.render(user1.ownMap); // should be: user1.ownMap.addShip(newShip) in the future
@@ -87,8 +87,6 @@ public class UI {
             x = Integer.parseInt(words[0]);
             y = Integer.parseInt(words[1]);
         }
-        System.out.println("parseInput x:" + x + "parseInput y: " + y);
-        System.out.println(words[2].toLowerCase(Locale.ROOT).charAt(0));
         Direction dir = words[2].toLowerCase(Locale.ROOT).charAt(0) == 'd' ? Direction.DOWN : Direction.RIGHT;
 
         return new Input(x, y, dir);

@@ -16,8 +16,6 @@ public class Ship {
             length = 4;
         }
         posList = new ArrayList<>();
-        System.out.println("lenght: " + length);
-        System.out.println("Adding x: " + x + " y: " + y);
         posList.add(new Pos(x, y));
         for (int i = 0; i < length-1; i++) {
             switch (dir) {
@@ -28,7 +26,6 @@ public class Ship {
                     y++;
                     break;
             }
-            System.out.println("Adding x: " + x + " y: " + y);
             posList.add(new Pos(x, y));
         }
     }
