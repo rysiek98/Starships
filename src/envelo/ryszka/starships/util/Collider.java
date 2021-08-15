@@ -27,7 +27,7 @@ public class Collider {
         for (Pos p : shipFields) {
             blockAround(copy, p);
         }
-
+        copy.show();
         for (int y = 0; y < copy.getSize(); y++) {
             for (int x = 0; x < copy.getSize(); x++) {
                 if (copy.getMapArray()[x][y] == Field.SHIP || copy.getMapArray()[x][y] == Field.LOCKED_AREA) {
@@ -42,23 +42,23 @@ public class Collider {
         int x = p.getX();
         int y = p.getY();
         // up row
-        if (x > 0 && x <= map.getSize() && y > 0 && y <= map.getSize() && map.getMapArray()[x - 1][y] != Field.SHIP)
+        if (x > 0 && y > 0 && map.getMapArray()[x - 1][y - 1] != Field.SHIP)
             map.getMapArray()[x - 1][y - 1] = Field.LOCKED_AREA;
-        if (x > 0 && y > 0 && y <= map.getSize() && map.getMapArray()[x - 1][y] != Field.SHIP)
+        if (x >= 0 && y > 0 && map.getMapArray()[x][y - 1] != Field.SHIP)
             map.getMapArray()[x][y - 1] = Field.LOCKED_AREA;
-        if (x > 0 && x <= map.getSize() - 2 && y > 0 && y <= map.getSize() && map.getMapArray()[x - 1][y] != Field.SHIP)
+        if (x >= 0 && x < map.getSize() - 1 && y > 0 && y < map.getSize() && map.getMapArray()[x + 1][y - 1] != Field.SHIP)
             map.getMapArray()[x + 1][y - 1] = Field.LOCKED_AREA;
         // middle row
-        if (x > 0 && x <= map.getSize() && map.getMapArray()[x - 1][y] != Field.SHIP)
+        if (x > 0 && x < map.getSize() && map.getMapArray()[x - 1][y] != Field.SHIP)
             map.getMapArray()[x - 1][y] = Field.LOCKED_AREA;
-        if (x > 0 && x <= map.getSize() - 2 && map.getMapArray()[x - 1][y] != Field.SHIP)
+        if (x >= 0 && x < map.getSize() - 1 && map.getMapArray()[x + 1][y] != Field.SHIP)
             map.getMapArray()[x + 1][y] = Field.LOCKED_AREA;
         // bottom row
-        if (x > 0 && x <= map.getSize() && y >= 0 && y <= map.getSize() - 2 && map.getMapArray()[x - 1][y] != Field.SHIP)
+        if (x > 0 && x < map.getSize() && y >= 0 && y < map.getSize() - 1 && map.getMapArray()[x - 1][y + 1] != Field.SHIP)
             map.getMapArray()[x - 1][y + 1] = Field.LOCKED_AREA;
-        if (x > 0 && y >= 0 && y <= map.getSize() - 2 && map.getMapArray()[x - 1][y] != Field.SHIP)
+        if (x >= 0 && y >= 0 && y < map.getSize() - 1 && map.getMapArray()[x][y + 1] != Field.SHIP)
             map.getMapArray()[x][y + 1] = Field.LOCKED_AREA;
-        if (x > 0 && x <= map.getSize() - 2 && y >= 0 && y <= map.getSize() - 2 && map.getMapArray()[x - 1][y] != Field.SHIP)
+        if (x >= 0 && x < map.getSize() - 1 && y >= 0 && y < map.getSize() - 1 && map.getMapArray()[x + 1][y + 1] != Field.SHIP)
             map.getMapArray()[x + 1][y + 1] = Field.LOCKED_AREA;
     }
 }
