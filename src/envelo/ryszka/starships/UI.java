@@ -58,7 +58,7 @@ public class UI {
                     user1.ownMap.show();
                     System.out.print("Input format: <x> <y> <dir>");
                     System.out.print("\nPlace your " + length + "x1 ship: ");
-                    Input input = parseInput(mapSize);
+                    Input input = validateInput(mapSize, length);
                     newShip = new Ship(input.x, input.y, input.dir, length);
                 } while (!Collider.isPlaceAvailable(newShip, user1.ownMap));
                 newShip.render(user1.ownMap); // should be: user1.ownMap.addShip(newShip) in the future
@@ -80,15 +80,27 @@ public class UI {
         String[] words = input.split(" ");
         int x = Integer.parseInt(words[0]);
         int y = Integer.parseInt(words[1]);
-        while (!(x >= 0 && y >= 0 && x < mapSize && y < mapSize)) {
-            System.out.print("Wrong input place x and y between 0 and " + mapSize+ ": ");
-            input = in.nextLine();
-            words = input.split(" ");
-            x = Integer.parseInt(words[0]);
-            y = Integer.parseInt(words[1]);
-        }
         Direction dir = words[2].toLowerCase(Locale.ROOT).charAt(0) == 'd' ? Direction.DOWN : Direction.RIGHT;
-
         return new Input(x, y, dir);
+    }
+
+    private Input validateInput(int mapSize, int length){
+        Input input = parseInput(mapSize);
+        while (!shipPlacementConditions(input.x, input.y, mapSize, length, input.dir)) {
+            System.out.print("Wrong input place x and y between 0 and " + mapSize+ " and");
+            System.out.println("your ships must not cross map border :");
+            input = parseInput(mapSize);
+        }
+        return input;
+    }
+
+    private boolean shipPlacementConditions(int x, int y, int mapSize, int length, Direction dir){
+        if(x >= 0 && y >= 0 && x < mapSize && y < mapSize ) {
+            if((dir == Direction.RIGHT && x+length <= mapSize) || (dir == Direction.DOWN && y+length <= mapSize))
+                return true;
+            else
+                return false;
+        }else
+            return false;
     }
 }
