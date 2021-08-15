@@ -1,8 +1,10 @@
-package envelo.ryszka.starships.util;
+package test.envelo.ryszka.starships;
 
 import envelo.ryszka.starships.User;
 import envelo.ryszka.starships.enums.Direction;
 import envelo.ryszka.starships.ship.Ship;
+import envelo.ryszka.starships.util.Collider;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +23,7 @@ class ColliderTest {
         ship.render(user.ownMap);
         user.shipList.add(ship);
         Ship newShip = new Ship(x, y, dir, length);
-        assertFalse(Collider.isPlaceAvailable(newShip, user.ownMap));
+        Assertions.assertFalse(Collider.isPlaceAvailable(newShip, user.ownMap));
     }
 
     @org.junit.jupiter.api.Test
