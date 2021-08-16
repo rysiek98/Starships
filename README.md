@@ -38,3 +38,10 @@ A popular [battleship game](https://en.wikipedia.org/wiki/Battleship_(game)) in 
 Project name has nothing to do with it. It was just a [song](https://youtu.be/SeIJmciN8mo) that popped up in my head, when thinking about project name.
 
 This file and project itself will be updated in the future. Game is under construction.
+
+## Commit conventions
+Commit messages in this repo should:
+- follow [this commit convention](https://www.conventionalcommits.org/en/v1.0.0/)
+- start with lowercase (only proper nouns should start with upper case)
+- use english language 
+- use imperative mode (do not use past tense)

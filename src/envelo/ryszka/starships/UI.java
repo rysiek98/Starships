@@ -88,7 +88,7 @@ public class UI {
         Input input = parseInput(mapSize);
         while (!shipPlacementConditions(input.x, input.y, mapSize, length, input.dir)) {
             System.out.print("Wrong input place x and y between 0 and " + mapSize+ " and");
-            System.out.println("your ships must not cross map border :");
+            System.out.println(" your ships cannot cross map border :");
             input = parseInput(mapSize);
         }
         return input;

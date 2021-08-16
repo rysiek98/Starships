@@ -27,7 +27,7 @@ public class Collider {
         for (Pos p : shipFields) {
             blockAround(copy, p);
         }
-        copy.show();
+        //copy.show();
         for (int y = 0; y < copy.getSize(); y++) {
             for (int x = 0; x < copy.getSize(); x++) {
                 if (copy.getMapArray()[x][y] == Field.SHIP || copy.getMapArray()[x][y] == Field.LOCKED_AREA) {
